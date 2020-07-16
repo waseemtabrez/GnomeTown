@@ -101,13 +101,8 @@
 		7F3AEB6A24BFE59B005038A9 /* GnomeTown */ = {
 			isa = PBXGroup;
 			children = (
-				7F3AEB6B24BFE59B005038A9 /* AppDelegate.swift */,
-				7F3AEB6D24BFE59B005038A9 /* SceneDelegate.swift */,
-				7F3AEB7224BFE59B005038A9 /* ContentView.swift */,
-				7F3AEB7424BFE59E005038A9 /* Assets.xcassets */,
-				7F3AEB7924BFE59E005038A9 /* LaunchScreen.storyboard */,
-				7F3AEB7C24BFE59E005038A9 /* Info.plist */,
-				7F3AEB6F24BFE59B005038A9 /* GnomeTown.xcdatamodeld */,
+				7F3AEB9F24BFE64D005038A9 /* CoreData */,
+				7F3AEB9E24BFE5CC005038A9 /* Resources */,
 				7F3AEB7624BFE59E005038A9 /* Preview Content */,
 			);
 			path = GnomeTown;
@@ -137,6 +132,27 @@
 				7F3AEB9224BFE59F005038A9 /* Info.plist */,
 			);
 			path = GnomeTownUITests;
+			sourceTree = "<group>";
+		};
+		7F3AEB9E24BFE5CC005038A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7F3AEB6B24BFE59B005038A9 /* AppDelegate.swift */,
+				7F3AEB6D24BFE59B005038A9 /* SceneDelegate.swift */,
+				7F3AEB7224BFE59B005038A9 /* ContentView.swift */,
+				7F3AEB7424BFE59E005038A9 /* Assets.xcassets */,
+				7F3AEB7924BFE59E005038A9 /* LaunchScreen.storyboard */,
+				7F3AEB7C24BFE59E005038A9 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7F3AEB9F24BFE64D005038A9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7F3AEB6F24BFE59B005038A9 /* GnomeTown.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,7 +458,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GnomeTown/Preview Content\"";
 				DEVELOPMENT_TEAM = 6WCGH4JR2H;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GnomeTown/Info.plist;
+				INFOPLIST_FILE = GnomeTown/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,7 +478,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GnomeTown/Preview Content\"";
 				DEVELOPMENT_TEAM = 6WCGH4JR2H;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GnomeTown/Info.plist;
+				INFOPLIST_FILE = GnomeTown/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
