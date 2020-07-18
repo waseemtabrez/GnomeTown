@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A9968C90-21BC-4724-848A-601D50E7DA9E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42FD310D-847C-49E3-9E56-D2F958A5BC23"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GnomeTown/CoreData/Manager/CoreDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "fetchAllTypes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5EC4A185-2398-4904-A4ED-BCAFDB729C88"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GnomeTown/DataStore/DataProvider/DataProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "fetchGnomes(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5EC4A185-2398-4904-A4ED-BCAFDB729C88 - 580f02c2bbcf56e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GnomeTown.DataProvider.fetchGnomes(completion: (Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GnomeTown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waseemtabrez/MyDev/GnomeTown/GnomeTown/DataStore/DataProvider/DataProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "98">
+               </Location>
+               <Location
+                  uuid = "5EC4A185-2398-4904-A4ED-BCAFDB729C88 - f8008d1f358a2f85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;GnomeTown.GnomeModel&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GnomeTown.DataProvider.fetchGnomes(completion: (Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GnomeTown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waseemtabrez/MyDev/GnomeTown/GnomeTown/DataStore/DataProvider/DataProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "234">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "25F068D6-F05A-46D6-924F-CE450F5A86F7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GnomeTown/Modules/GnomeList/GnomeListVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "loadGnomes()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "25F068D6-F05A-46D6-924F-CE450F5A86F7 - 18b611800f6b384a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GnomeTown.GnomeListVM.loadGnomes() -&gt; ()"
+                  moduleName = "GnomeTown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waseemtabrez/MyDev/GnomeTown/GnomeTown/Modules/GnomeList/GnomeListVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  uuid = "25F068D6-F05A-46D6-924F-CE450F5A86F7 - c180a037bdc352f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GnomeTown.GnomeListVM.loadGnomes() -&gt; ()"
+                  moduleName = "GnomeTown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waseemtabrez/MyDev/GnomeTown/GnomeTown/Modules/GnomeList/GnomeListVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "89">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BCAA9A7B-A759-4AC4-848F-7CD279D4B0DC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GnomeTown/Modules/GnomeList/GnomeListVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "loadGnomes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A933564-0D34-4CC1-BB22-130E9E42664D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GnomeTown/CoreData/Manager/CoreDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "save(gnomes:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8A933564-0D34-4CC1-BB22-130E9E42664D - f46a43ce320528d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GnomeTown.CoredataManager.save(gnomes: Swift.Array&lt;GnomeTown.GnomeModel&gt;) -&gt; ()"
+                  moduleName = "GnomeTown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waseemtabrez/MyDev/GnomeTown/GnomeTown/CoreData/Manager/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "2683">
+               </Location>
+               <Location
+                  uuid = "8A933564-0D34-4CC1-BB22-130E9E42664D - 8d667919227c1100"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in GnomeTown.CoredataManager.save(gnomes: Swift.Array&lt;GnomeTown.GnomeModel&gt;) -&gt; ()"
+                  moduleName = "GnomeTown"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waseemtabrez/MyDev/GnomeTown/GnomeTown/CoreData/Manager/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DBF83186-078B-4202-B006-E08EB55679A7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GnomeTown/Modules/GnomeList/GnomeListVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "loadGnomes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C1CE7069-7E58-4D43-88D8-F55DDDADC046"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GnomeTown/DataStore/NetworkManager/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getGnomes(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
