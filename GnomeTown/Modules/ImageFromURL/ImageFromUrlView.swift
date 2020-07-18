@@ -37,9 +37,7 @@ struct ImageFromURLView: View {
          .aspectRatio(contentMode: .fit)
    }
    
-   //    static var defaultImage = UIImage(named: "ProfileIcon90")
    static var defaultImage = UIImage(systemName: "person.crop.circle")
-   
 }
 
 struct UrlImageView_Previews: PreviewProvider {

@@ -39,24 +39,6 @@ struct NetworkManager {
          }
       }.resume()
    }
-   
-//   func parseArticlesFromData(data: Data) -> [GnomeModel] {
-//      var response: BrastlewarkApiResponse
-//      do {
-//         response = try JSONDecoder().decode(BrastlewarkApiResponse.self, from: data)
-//      } catch {
-//         print("Error parsing the JSON: \(error)")
-//         return []
-//      }
-//
-//      //        if response.status != "ok" {
-//      //            print("Status is not ok: \(response.status)")
-//      //            return []
-//      //        }
-//      print("Downloaded results: \(response.brastlewark?.count ?? 0)")
-//      return response.brastlewark ?? []
-//   }
-   
 }
 
 let dataErrorDomain = "dataErrorDomain"
@@ -67,7 +49,6 @@ enum DataErrorCode: NSInteger {
 }
 
 struct BrastlewarkApiResponse: Codable {
-   //    var status: String
    var brastlewark: [GnomeModel]?
    enum CodingKeys: String, CodingKey {
       case brastlewark = "Brastlewark"

@@ -39,10 +39,8 @@ struct CoredataManager {
       self.managedObjectContext.performAndWait {
          do {
             try self.managedObjectContext.save()
-//            completion()
          } catch {
             print(error)
-//            completion()
          }
       }
    }
@@ -56,7 +54,6 @@ struct CoredataManager {
             try self.managedObjectContext.executeAndMergeChanges(withBatchDeleteRequest: batchDeleteRequest)
             
             print("Coredata Items after Batch deletion: \(CoredataManager.shared.fetchAllTypes()?.count ?? 45)")
-//            completion()
          } catch {
             print("Can't delete the Coredata objects")
          }

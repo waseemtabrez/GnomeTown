@@ -11,15 +11,9 @@ import CoreData
 
 struct DataProvider {
    
-//   private let persistentContainer: NSPersistentContainer
    private let repository: NetworkManager
-   
-//   var viewContext: NSManagedObjectContext {
-//      return persistentContainer.viewContext
-//   }
-   
+      
    init(repository: NetworkManager) {
-//      self.persistentContainer = persistentContainer
       self.repository = repository
    }
    
@@ -35,10 +29,6 @@ struct DataProvider {
             completion(error)
             return
          }
-         
-//         let taskContext = NSManagedObjectContext.currentStore.newBackgroundContext()
-//         taskContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-//         taskContext.undoManager = nil
          
          _ = self.syncGnomes(gnomes: jsonDictionary, taskContext: NSManagedObjectContext.currentStore.newBackgroundContext())
          

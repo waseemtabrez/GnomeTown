@@ -24,7 +24,7 @@ class GnomeListVM: ObservableObject {
             print("Error retrieving data")
             return
          }
-//         self.gnomesFetched = CoredataManager.shared.fetchAllTypes() ?? [GnomeModel]()
+         
          let someArr = CoredataManager.shared.fetchAllTypes()?.sorted(by: { $0.identifier ?? 0 < $1.identifier ?? 1 }) ?? [GnomeModel]()
          DispatchQueue.main.async {
             self.gnomesFetched.removeAll()

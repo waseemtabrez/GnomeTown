@@ -8,14 +8,7 @@
 
 import Foundation
 
-struct GnomeModel: /*Identifiable,*/ Codable, Hashable {
-//   static func == (lhs: GnomeModel, rhs: GnomeModel) -> Bool {
-//      lhs.identifier == rhs.identifier
-//   }
-//   func hash(into hasher: inout Hasher) {
-//      hasher.combine(identifier)
-//   }
-   
+struct GnomeModel: Codable, Hashable {
    var identifier: Int?
    var name: String?
    var thumbnail: String?
