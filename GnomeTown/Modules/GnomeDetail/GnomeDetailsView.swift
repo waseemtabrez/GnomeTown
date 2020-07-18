@@ -27,6 +27,11 @@ struct GnomeDetailsView: View {
             return Color.secondary
       }
    }
+   
+   func fetchFriends(friend: String) -> GnomeModel {
+      return CoredataManager.shared.fetchBy(name: friend) ?? GnomeModel()
+   }
+   
    var body: some View {
       NavigationView {
          VStack {
@@ -66,7 +71,8 @@ struct GnomeDetailsView: View {
                   .padding(.horizontal, 12).frame(width: UIScreen.main.bounds.width, alignment: .leading).background(Color.clear)) {
                      
                      ForEach(gnome.friends ?? [String](), id: \.self) { friend in
-                        Text(friend).padding(.leading, 3).foregroundColor(Color.gray)
+//                        Text(friend).padding(.leading, 3).foregroundColor(Color.gray)
+                        GnomeItemView(gnomeModel: self.fetchFriends(friend: friend))
                      }
                }.cornerRadius(25)
             }

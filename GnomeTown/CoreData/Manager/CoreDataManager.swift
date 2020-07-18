@@ -60,32 +60,64 @@ struct CoredataManager {
       }
    }
    
-   func fetchAllTypes() -> [GnomeModel]? {
-      var accountTypes = [Gnome]()
-      var accountTypesInModel  = [GnomeModel]()
-      let accountRequest: NSFetchRequest<Gnome> = Gnome.fetchRequest()
+   func fetchBy(name: String) -> GnomeModel? {
+      var accounts = [Gnome]()
+      let request: NSFetchRequest<Gnome> = Gnome.fetchRequest()
+      request.predicate = NSPredicate(format: "name == %@", name as CVarArg)
       
       do {
-         accountTypes = try self.managedObjectContext.fetch(accountRequest)
+         accounts = try self.managedObjectContext.fetch(request)
       } catch let error as NSError {
          print(error)
       }
       
-      for accountType in accountTypes {
+      return gnomeEntityToModel(gnomes: accounts).first
+   }
+   
+   private func gnomeEntityToModel(gnomes: [Gnome]) -> [GnomeModel] {
+      var gnomesAsCustomModel  = [GnomeModel]()
+      for currentGnome in gnomes {
          var item = GnomeModel()
-         item.name = accountType.name
-         item.identifier = Int(accountType.identifier)
-         item.age = Int(accountType.age)
-         item.height = accountType.height
-         item.weight = accountType.weight
-         item.hairColor = accountType.hairColor ?? ""
-         item.professions = (accountType.professions ?? [String]()) as [String]
-         item.friends = (accountType.friends ?? [String]()) as [String]
-         item.thumbnail = accountType.thumbnail
-         
-         
-         accountTypesInModel.append(item)
+         item.name = currentGnome.name!
+         item.age = Int(currentGnome.age)
+         item.identifier = Int(currentGnome.identifier)
+         item.height = currentGnome.height
+         item.weight = currentGnome.weight
+         item.hairColor = currentGnome.hairColor
+         item.thumbnail = currentGnome.thumbnail
+         item.friends = currentGnome.friends
+         item.professions = currentGnome.professions
+         gnomesAsCustomModel.append(item)
       }
-      return accountTypesInModel
+      return gnomesAsCustomModel
+   }
+   
+   func fetchAllTypes() -> [GnomeModel]? {
+      var gnomeEntityArray = [Gnome]()
+      var gnomesAsCustomModel  = [GnomeModel]()
+      let gnomeFetchRequest: NSFetchRequest<Gnome> = Gnome.fetchRequest()
+      
+      do {
+         gnomeEntityArray = try self.managedObjectContext.fetch(gnomeFetchRequest)
+      } catch let error as NSError {
+         print(error)
+      }
+      
+      for gnome in gnomeEntityArray {
+         var item = GnomeModel()
+         item.name = gnome.name
+         item.identifier = Int(gnome.identifier)
+         item.age = Int(gnome.age)
+         item.height = gnome.height
+         item.weight = gnome.weight
+         item.hairColor = gnome.hairColor ?? ""
+         item.professions = (gnome.professions ?? [String]()) as [String]
+         item.friends = (gnome.friends ?? [String]()) as [String]
+         item.thumbnail = gnome.thumbnail
+         
+         
+         gnomesAsCustomModel.append(item)
+      }
+      return gnomesAsCustomModel
    }
 }
