@@ -33,6 +33,12 @@
 		7F3AEBD024C28393005038A9 /* GnomeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBCF24C28393005038A9 /* GnomeDetailsView.swift */; };
 		7F3AEBD324C29040005038A9 /* ColorFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBD224C29040005038A9 /* ColorFilterView.swift */; };
 		7F3AEBD924C2A0B6005038A9 /* FilterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBD824C2A0B6005038A9 /* FilterVM.swift */; };
+		7F3AEBDC24C338CF005038A9 /* ProfessionsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBDB24C338CF005038A9 /* ProfessionsListVM.swift */; };
+		7F3AEBDE24C338DF005038A9 /* ProfessionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBDD24C338DF005038A9 /* ProfessionsListView.swift */; };
+		7F3AEBE224C358D6005038A9 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBE124C358D6005038A9 /* FilterView.swift */; };
+		7F3AEBE424C37629005038A9 /* ColorsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBE324C37629005038A9 /* ColorsListVM.swift */; };
+		7F3AEBE724C3E600005038A9 /* AgeFilterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBE624C3E600005038A9 /* AgeFilterVM.swift */; };
+		7F3AEBE924C3E610005038A9 /* AgeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBE824C3E610005038A9 /* AgeFilterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +91,12 @@
 		7F3AEBCF24C28393005038A9 /* GnomeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnomeDetailsView.swift; sourceTree = "<group>"; };
 		7F3AEBD224C29040005038A9 /* ColorFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFilterView.swift; sourceTree = "<group>"; };
 		7F3AEBD824C2A0B6005038A9 /* FilterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVM.swift; sourceTree = "<group>"; };
+		7F3AEBDB24C338CF005038A9 /* ProfessionsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionsListVM.swift; sourceTree = "<group>"; };
+		7F3AEBDD24C338DF005038A9 /* ProfessionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionsListView.swift; sourceTree = "<group>"; };
+		7F3AEBE124C358D6005038A9 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		7F3AEBE324C37629005038A9 /* ColorsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsListVM.swift; sourceTree = "<group>"; };
+		7F3AEBE624C3E600005038A9 /* AgeFilterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeFilterVM.swift; sourceTree = "<group>"; };
+		7F3AEBE824C3E610005038A9 /* AgeFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeFilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,10 +348,40 @@
 		7F3AEBD124C2901F005038A9 /* GnomeFilter */ = {
 			isa = PBXGroup;
 			children = (
-				7F3AEBD224C29040005038A9 /* ColorFilterView.swift */,
+				7F3AEBE524C3E5E6005038A9 /* AgeFilter */,
+				7F3AEBE024C3512B005038A9 /* ColorFilter */,
+				7F3AEBDA24C338A2005038A9 /* ProfessionsList */,
 				7F3AEBD824C2A0B6005038A9 /* FilterVM.swift */,
+				7F3AEBE124C358D6005038A9 /* FilterView.swift */,
 			);
 			path = GnomeFilter;
+			sourceTree = "<group>";
+		};
+		7F3AEBDA24C338A2005038A9 /* ProfessionsList */ = {
+			isa = PBXGroup;
+			children = (
+				7F3AEBDB24C338CF005038A9 /* ProfessionsListVM.swift */,
+				7F3AEBDD24C338DF005038A9 /* ProfessionsListView.swift */,
+			);
+			path = ProfessionsList;
+			sourceTree = "<group>";
+		};
+		7F3AEBE024C3512B005038A9 /* ColorFilter */ = {
+			isa = PBXGroup;
+			children = (
+				7F3AEBD224C29040005038A9 /* ColorFilterView.swift */,
+				7F3AEBE324C37629005038A9 /* ColorsListVM.swift */,
+			);
+			path = ColorFilter;
+			sourceTree = "<group>";
+		};
+		7F3AEBE524C3E5E6005038A9 /* AgeFilter */ = {
+			isa = PBXGroup;
+			children = (
+				7F3AEBE624C3E600005038A9 /* AgeFilterVM.swift */,
+				7F3AEBE824C3E610005038A9 /* AgeFilterView.swift */,
+			);
+			path = AgeFilter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,20 +515,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F3AEBDC24C338CF005038A9 /* ProfessionsListVM.swift in Sources */,
 				7F3AEBD924C2A0B6005038A9 /* FilterVM.swift in Sources */,
 				7F3AEB6C24BFE59B005038A9 /* AppDelegate.swift in Sources */,
 				7F3AEBAB24C1FA95005038A9 /* CoreDataCustomStack.swift in Sources */,
+				7F3AEBE224C358D6005038A9 /* FilterView.swift in Sources */,
 				7F3AEBCC24C26585005038A9 /* GnomeListVM.swift in Sources */,
 				7F3AEBD324C29040005038A9 /* ColorFilterView.swift in Sources */,
 				7F3AEBCE24C26797005038A9 /* GnomeListView.swift in Sources */,
 				7F3AEBCA24C2618E005038A9 /* DataProvider.swift in Sources */,
+				7F3AEBDE24C338DF005038A9 /* ProfessionsListView.swift in Sources */,
 				7F3AEBBB24C21E4C005038A9 /* ImageFromUrlView.swift in Sources */,
 				7F3AEBBE24C21EFE005038A9 /* ImageFromURLVM.swift in Sources */,
 				7F3AEBB324C1FC77005038A9 /* GnomeModel.swift in Sources */,
 				7F3AEBA924BFE864005038A9 /* Extensions.swift in Sources */,
+				7F3AEBE424C37629005038A9 /* ColorsListVM.swift in Sources */,
 				7F3AEB7124BFE59B005038A9 /* GnomeTown.xcdatamodeld in Sources */,
+				7F3AEBE924C3E610005038A9 /* AgeFilterView.swift in Sources */,
 				7F3AEBA224BFE7EB005038A9 /* Gnome+CoreDataClass.swift in Sources */,
 				7F3AEB7324BFE59B005038A9 /* ContentView.swift in Sources */,
+				7F3AEBE724C3E600005038A9 /* AgeFilterVM.swift in Sources */,
 				7F3AEBA324BFE7EB005038A9 /* Gnome+CoreDataProperties.swift in Sources */,
 				7F3AEBB924C21E08005038A9 /* CustomActivityIndicator.swift in Sources */,
 				7F3AEBA524BFE80D005038A9 /* CoreDataManager.swift in Sources */,

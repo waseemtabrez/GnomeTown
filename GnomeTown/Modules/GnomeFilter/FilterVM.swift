@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GenomeFilterVM: ObservableObject {
+class GnomeFilterVM: ObservableObject {
    var dataStore = DataProvider(repository: NetworkManager.shared)
    @Published var filteredArray = [GnomeModel]()
    
@@ -49,4 +49,9 @@ class GenomeFilterVM: ObservableObject {
       return hairColorsLocal
    }
    
+   func removeSelectedProfessions(profession: String) {
+      self.selectedProfessions.removeAll { (item) -> Bool in
+         item == profession
+      }
+   }
 }
