@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import Network
+import UserNotifications
 
 class GnomeListVM: ObservableObject {
    var dataStore = DataProvider(repository: NetworkManager.shared)
@@ -60,9 +61,9 @@ class GnomeListVM: ObservableObject {
                   }
                })
             }
+            self.deliverNotificationOnCompletion()
          }
       } else {
-         
          fetchLocalData { (fetchedGnomes) in
             DispatchQueue.main.async {
                if fetchedGnomes.isEmpty {
@@ -145,6 +146,16 @@ class GnomeListVM: ObservableObject {
       }
    }
    
+   func deliverNotificationOnCompletion() {
+      let content = UNMutableNotificationContent()
+      content.title = "Brastlewark"
+      content.body = "Gnomes downloaded from the server"
+      content.sound = UNNotificationSound.default
+      let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+      let request = UNNotificationRequest(identifier: "BrastlewarkNotificationIdentifier", content: content, trigger: trigger)
+      UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+   }
+   
    func checkInternetIsAvailable(completion: @escaping (Bool) -> Void) {
       let monitor = NWPathMonitor()
       let queue = DispatchQueue(label: "InternetConnectionMonitor")
@@ -155,7 +166,6 @@ class GnomeListVM: ObservableObject {
             completion(false)
          }
       }
-      
       monitor.start(queue: queue)
    }
 }
