@@ -10,7 +10,7 @@ import Foundation
 
 class AgeFilterVM: ObservableObject {
    @Published var ageTypes: [AgeFilter] = [.equalTo, .greaterThan, .greaterThanOrEqualTo, .lessThan, .lessThanOrEqualTo]
-   @Published var selectedAgeType: AgeFilter = .none
+   @Published var selectedAgeType: AgeFilter = .equalTo
    @Published var selectedAgeString = ""
    @Published var selectedAge = 0
 
@@ -20,13 +20,13 @@ class AgeFilterVM: ObservableObject {
       clearSelectedAge()
    }
    func clearSelectedAge() {
-      self.selectedAgeType = .none
+      self.selectedAgeType = .equalTo
       self.selectedAge = 0
    }
    
    func resetSelectedColors() {
       self.selectedAgeString = ""
-      self.selectedAgeType = .none
+      self.selectedAgeType = .equalTo
    }
    
    func set(ageType: AgeFilter) {
