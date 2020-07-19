@@ -2,16 +2,44 @@
 //  ContentView.swift
 //  GnomeTown
 //
-//  Created by 837676 on 15/07/20.
-//  Copyright © 2020 Syed Developers. All rights reserved.
+//  Created by Waseem Tabrez on 15/07/20.
+//  Copyright © 2020 Waseem Tabrez. All rights reserved.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-      GnomeListView().environmentObject(GnomeListVM())
-    }
+   @State private var selection = 0
+   @ObservedObject var gnomeListVM = GnomeListVM()
+   @ObservedObject var gnomeFilterVM = GnomeFilterVM()
+   
+   var body: some View {
+      TabView(selection: self.$selection){
+         GnomeListView().environmentObject(self.gnomeListVM)
+            .tabItem {
+               VStack {
+                  Image(systemName: "person.3.fill")
+                  Text("Brastlewark Crew")
+               }
+         }.tag(0)
+         
+         BrastlewarkDashboardView()
+            .environmentObject(self.gnomeListVM)
+            .environmentObject(self.gnomeFilterVM)
+            .tabItem {
+               VStack {
+                  Image(systemName: "house")
+                  Text("Home")
+               }
+         }
+         .tag(1)
+      }.onAppear{
+         self.gnomeListVM.loadDataFromServer = true
+         self.gnomeListVM.loadGnomes()
+         _ = self.gnomeFilterVM.getHaircolors()
+         _ = self.gnomeFilterVM.getProfessions()
+      }
+   }
 }
 
 struct ContentView_Previews: PreviewProvider {

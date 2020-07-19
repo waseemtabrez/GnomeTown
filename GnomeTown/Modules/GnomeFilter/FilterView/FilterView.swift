@@ -2,8 +2,8 @@
 //  FilterView.swift
 //  GnomeTown
 //
-//  Created by 837676 on 18/07/20.
-//  Copyright © 2020 Syed Developers. All rights reserved.
+//  Created by Waseem Tabrez on 18/07/20.
+//  Copyright © 2020 Waseem Tabrez. All rights reserved.
 //
 
 import SwiftUI
@@ -180,7 +180,7 @@ struct FiltersDoneView: View {
    var body: some View {
       Button(action: {
          self.showView.toggle()
-         if (!self.gnomeListVM.selectedColors.isEmpty || !self.gnomeListVM.selectedProfessions.isEmpty){
+         if (!self.gnomeListVM.selectedColors.isEmpty || !self.gnomeListVM.selectedProfessions.isEmpty || self.gnomeListVM.ageChoosen != 0){
             self.gnomeListVM.loading = true
             self.gnomeListVM.filter = true
          } else {

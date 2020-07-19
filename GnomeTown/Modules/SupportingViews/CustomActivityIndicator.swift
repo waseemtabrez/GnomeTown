@@ -2,8 +2,8 @@
 //  CustomActivityIndicator.swift
 //  GnomeTown
 //
-//  Created by 837676 on 17/07/20.
-//  Copyright © 2020 Syed Developers. All rights reserved.
+//  Created by Waseem Tabrez on 17/07/20.
+//  Copyright © 2020 Waseem Tabrez. All rights reserved.
 //
 
 import SwiftUI

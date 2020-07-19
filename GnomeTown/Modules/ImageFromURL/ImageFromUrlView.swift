@@ -2,8 +2,8 @@
 //  ImageFromUrlView.swift
 //  GnomeTown
 //
-//  Created by 837676 on 17/07/20.
-//  Copyright © 2020 Syed Developers. All rights reserved.
+//  Created by Waseem Tabrez on 17/07/20.
+//  Copyright © 2020 Waseem Tabrez. All rights reserved.
 //
 
 import SwiftUI
@@ -30,11 +30,16 @@ struct ImageFromURLView: View {
       return isSmallDevice
    }
    var body: some View {
-      Image(uiImage: urlImageModel.image ?? ImageFromURLView.defaultImage!)
+      ZStack{
+         if urlImageModel.image == nil {
+            ActivityIndicator(isAnimating: Binding.constant(true), style: .medium)
+         }
+         Image(uiImage: urlImageModel.image ?? ImageFromURLView.defaultImage!)
          .resizable()
          .frame(width: self.isDetailView ? 200 : 40, height: self.isDetailView ? 200 : 40)
          .cornerRadius(self.isDetailView ? 100 : 20)
          .aspectRatio(contentMode: .fit)
+      }
    }
    
    static var defaultImage = UIImage(systemName: "person.crop.circle")

@@ -39,6 +39,7 @@
 		7F3AEBE424C37629005038A9 /* ColorsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBE324C37629005038A9 /* ColorsListVM.swift */; };
 		7F3AEBE724C3E600005038A9 /* AgeFilterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBE624C3E600005038A9 /* AgeFilterVM.swift */; };
 		7F3AEBE924C3E610005038A9 /* AgeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AEBE824C3E610005038A9 /* AgeFilterView.swift */; };
+		7FE29B5324C4887F006EAEC2 /* BrastlewarkDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE29B5224C4887F006EAEC2 /* BrastlewarkDashboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		7F3AEBE324C37629005038A9 /* ColorsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsListVM.swift; sourceTree = "<group>"; };
 		7F3AEBE624C3E600005038A9 /* AgeFilterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeFilterVM.swift; sourceTree = "<group>"; };
 		7F3AEBE824C3E610005038A9 /* AgeFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeFilterView.swift; sourceTree = "<group>"; };
+		7FE29B5224C4887F006EAEC2 /* BrastlewarkDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrastlewarkDashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 		7F3AEBB624C210A1005038A9 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				7FE29B5224C4887F006EAEC2 /* BrastlewarkDashboardView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -348,11 +351,10 @@
 		7F3AEBD124C2901F005038A9 /* GnomeFilter */ = {
 			isa = PBXGroup;
 			children = (
+				7FE29B5124C487E6006EAEC2 /* FilterView */,
 				7F3AEBE524C3E5E6005038A9 /* AgeFilter */,
 				7F3AEBE024C3512B005038A9 /* ColorFilter */,
 				7F3AEBDA24C338A2005038A9 /* ProfessionsList */,
-				7F3AEBD824C2A0B6005038A9 /* FilterVM.swift */,
-				7F3AEBE124C358D6005038A9 /* FilterView.swift */,
 			);
 			path = GnomeFilter;
 			sourceTree = "<group>";
@@ -382,6 +384,15 @@
 				7F3AEBE824C3E610005038A9 /* AgeFilterView.swift */,
 			);
 			path = AgeFilter;
+			sourceTree = "<group>";
+		};
+		7FE29B5124C487E6006EAEC2 /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				7F3AEBD824C2A0B6005038A9 /* FilterVM.swift */,
+				7F3AEBE124C358D6005038A9 /* FilterView.swift */,
+			);
+			path = FilterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +548,7 @@
 				7F3AEBE724C3E600005038A9 /* AgeFilterVM.swift in Sources */,
 				7F3AEBA324BFE7EB005038A9 /* Gnome+CoreDataProperties.swift in Sources */,
 				7F3AEBB924C21E08005038A9 /* CustomActivityIndicator.swift in Sources */,
+				7FE29B5324C4887F006EAEC2 /* BrastlewarkDashboardView.swift in Sources */,
 				7F3AEBA524BFE80D005038A9 /* CoreDataManager.swift in Sources */,
 				7F3AEBC624C25D2A005038A9 /* NetworkManager.swift in Sources */,
 				7F3AEBC124C21F5A005038A9 /* ImageCache.swift in Sources */,

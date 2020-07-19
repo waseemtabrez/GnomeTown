@@ -2,8 +2,8 @@
 //  GnomeListVM.swift
 //  GnomeTown
 //
-//  Created by 837676 on 17/07/20.
-//  Copyright © 2020 Syed Developers. All rights reserved.
+//  Created by Waseem Tabrez on 17/07/20.
+//  Copyright © 2020 Waseem Tabrez. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import Network
 class GnomeListVM: ObservableObject {
    var dataStore = DataProvider(repository: NetworkManager.shared)
    @Published var gnomesFetched = [GnomeModel]()
-   @Published var loading: Bool = false
+   @Published var loading: Bool = true
    @Published var selectedProfessions = [String]()
    @Published var selectedColors = [String]()
    @Published var filter: Bool = false
@@ -22,14 +22,22 @@ class GnomeListVM: ObservableObject {
    @Published var ageChoosen: Int = 0
    @Published var ageFilter: AgeFilter = .none
    @Published var internetAvailable: Bool = true
-   
+   @Published var professionsCount: Int = 0
+   @Published var hairColorsCount: Int = 0
+
    init() {
       self.gnomesFetched = CoredataManager.shared.fetchAllTypes()?.sorted(by: { $0.identifier ?? 0 < $1.identifier ?? 1 }) ?? [GnomeModel]()
    }
    
    func loadGnomes(){
-      checkInternetIsAvailable()
-//      if self.internetAvailable
+      checkInternetIsAvailable(completion: { (response) in
+         DispatchQueue.main.async {
+            self.internetAvailable = response
+         }
+      })
+      DispatchQueue.main.async {
+         self.loading = true
+      }
       if self.loadDataFromServer && self.internetAvailable {
          dataStore.fetchGnomes { (error) in
             guard error == nil else {
@@ -45,17 +53,40 @@ class GnomeListVM: ObservableObject {
                self.gnomesFetched.removeAll()
                self.gnomesFetched.append(contentsOf: someArr)
                print("FetchedItemsNew!!!: \(self.gnomesFetched.count)")
-               self.filterResults()
-//               self.loading = false
+               self.filterResults(completion: {
+                  DispatchQueue.main.async {
+                     self.loading = false
+                     self.filter = false
+                  }
+               })
             }
          }
       } else {
-         DispatchQueue.main.async {
-            self.gnomesFetched.removeAll()
-            self.gnomesFetched = CoredataManager.shared.fetchAllTypes()?.sorted(by: { $0.identifier ?? 0 < $1.identifier ?? 1 }) ?? [GnomeModel]()
-            self.filterResults()
-            self.loading = false
+         
+         fetchLocalData { (fetchedGnomes) in
+            DispatchQueue.main.async {
+               if fetchedGnomes.isEmpty {
+                  self.gnomesFetched.removeAll()
+               } else {
+                  self.gnomesFetched.removeAll()
+                  self.gnomesFetched.append(contentsOf: fetchedGnomes)
+               }
+               self.loading = false
+            }
          }
+      }
+   }
+   
+   func fetchLocalData(completion: @escaping ([GnomeModel]) -> Void) {
+      DispatchQueue.main.async {
+         self.loading = true
+         self.gnomesFetched.removeAll()
+      }
+      let fetchedResults = CoredataManager.shared.fetchAllTypes()?.sorted(by: { $0.identifier ?? 0 < $1.identifier ?? 1 }) ?? [GnomeModel]()
+      if fetchedResults.isEmpty {
+         completion([GnomeModel]())
+      } else {
+         completion(fetchedResults)
       }
    }
    
@@ -71,8 +102,10 @@ class GnomeListVM: ObservableObject {
       }
    }
    
-   func filterResults() {
-      self.loading = true
+   func filterResults(completion: @escaping () -> Void) {
+      DispatchQueue.main.async {
+         self.loading.toggle()
+      }
          if !self.selectedColors.isEmpty {
             self.gnomesFetched = self.gnomesFetched.filter { (gnome) -> Bool in
                self.selectedColors.contains(gnome.hairColor!)
@@ -91,8 +124,7 @@ class GnomeListVM: ObservableObject {
             applyAgeFilterParam(age: gnome.age ?? 0)
          })
       }
-         self.loading = false
-         self.filter = false
+      completion()
    }
    
    func applyAgeFilterParam(age: Int) -> Bool {
@@ -113,18 +145,14 @@ class GnomeListVM: ObservableObject {
       }
    }
    
-   func checkInternetIsAvailable() {
+   func checkInternetIsAvailable(completion: @escaping (Bool) -> Void) {
       let monitor = NWPathMonitor()
       let queue = DispatchQueue(label: "InternetConnectionMonitor")
       monitor.pathUpdateHandler = { pathUpdateHandler in
          if pathUpdateHandler.status == .satisfied {
-            DispatchQueue.main.async {
-               self.internetAvailable = true
-            }
+            completion(true)
          } else {
-            DispatchQueue.main.async {
-               self.internetAvailable = false
-            }
+            completion(false)
          }
       }
       
