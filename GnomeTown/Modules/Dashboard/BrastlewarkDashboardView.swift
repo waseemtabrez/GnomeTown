@@ -11,6 +11,7 @@ import SwiftUI
 struct BrastlewarkDashboardView: View {
    @EnvironmentObject var gnomeListVM: GnomeListVM
    @EnvironmentObject var gnomeFilterVM: GnomeFilterVM
+   
    @State var showWelcome: Bool = true
     var body: some View {
       NavigationView{
@@ -33,7 +34,7 @@ struct BrastlewarkDashboardView: View {
                         if self.gnomeListVM.loading {
                            ActivityIndicator(isAnimating: Binding.constant(true), style: .medium)
                         } else {
-                           Text("\(self.gnomeListVM.gnomesFetched.count)")
+                           Text("\(self.gnomeListVM.totalGnomesFetched.count)")
                         }
 
                      }.padding()
@@ -43,7 +44,7 @@ struct BrastlewarkDashboardView: View {
                         if self.gnomeListVM.loading {
                            ActivityIndicator(isAnimating: Binding.constant(true), style: .medium)
                         } else {
-                           Text("\(self.gnomeFilterVM.professions.count)")
+                           Text("\(self.gnomeListVM.professionsCount)")
                         }
                      }.padding()
                      HStack{
@@ -52,7 +53,7 @@ struct BrastlewarkDashboardView: View {
                         if self.gnomeListVM.loading {
                            ActivityIndicator(isAnimating: Binding.constant(true), style: .medium)
                         } else {
-                           Text("\(self.gnomeFilterVM.hairColor.count)")
+                           Text("\(self.gnomeListVM.hairColorsCount)")
                         }
                      }.padding()
                   }
@@ -60,7 +61,11 @@ struct BrastlewarkDashboardView: View {
                   .background(Color(UIColor.systemGreen))
                   .cornerRadius(30)
                   Spacer()
-               }.padding(.horizontal, 45)
+               }.onAppear{
+                  self.gnomeListVM.hairColorsCount = self.gnomeFilterVM.getHaircolors().count
+                  self.gnomeListVM.professionsCount = self.gnomeFilterVM.getProfessions().count
+               }
+               .padding(.horizontal, 45)
             } else {
                
             }

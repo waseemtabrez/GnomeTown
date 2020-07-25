@@ -10,8 +10,11 @@ import Foundation
 import CoreData
 
 extension NSManagedObjectContext {
-   static var currentContext: NSManagedObjectContext {
+   static var viewContext: NSManagedObjectContext {
       return CoreDataCustomStack.shared.persistentContainer.viewContext
+   }
+   static var backgroundContext: NSManagedObjectContext {
+      return CoreDataCustomStack.shared.persistentContainer.newBackgroundContext()
    }
    
    static var currentStore: NSPersistentCloudKitContainer {

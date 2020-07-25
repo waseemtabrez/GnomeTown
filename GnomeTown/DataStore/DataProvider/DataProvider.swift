@@ -30,7 +30,7 @@ struct DataProvider {
             return
          }
          
-         _ = self.syncGnomes(gnomes: jsonDictionary, taskContext: NSManagedObjectContext.currentStore.newBackgroundContext())
+         _ = self.syncGnomes(gnomes: jsonDictionary, taskContext: CoreDataCustomStack.shared.persistentContainer.newBackgroundContext())
          
          completion(nil)
       }
@@ -46,14 +46,14 @@ struct DataProvider {
          CoredataManager.shared.save(gnomes: gnomes)
          
          // Saving all the changes just made and resetting the taskContext to free the cache.
-         if taskContext.hasChanges {
-            do {
-               try taskContext.save()
-            } catch {
-               print("Error: \(error)\nCould not save Core Data context.")
-            }
-            taskContext.reset() // Resetting the context to clean up the cache and lower the memory footprint.
-         }
+//         if taskContext.hasChanges {
+//            do {
+//               try taskContext.save()
+//            } catch {
+//               print("Error: \(error)\nCould not save Core Data context.")
+//            }
+//            taskContext.reset() // Resetting the context to clean up the cache and lower the memory footprint.
+//         }
          successfull = true
       }
       return successfull

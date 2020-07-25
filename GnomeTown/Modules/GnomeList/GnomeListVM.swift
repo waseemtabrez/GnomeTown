@@ -14,6 +14,7 @@ import UserNotifications
 class GnomeListVM: ObservableObject {
    var dataStore = DataProvider(repository: NetworkManager.shared)
    @Published var gnomesFetched = [GnomeModel]()
+   @Published var totalGnomesFetched = [GnomeModel]()
    @Published var loading: Bool = true
    @Published var selectedProfessions = [String]()
    @Published var selectedColors = [String]()
@@ -31,14 +32,14 @@ class GnomeListVM: ObservableObject {
    }
    
    func loadGnomes(){
+      DispatchQueue.main.async {
+         self.loading = true
+      }
       checkInternetIsAvailable(completion: { (response) in
          DispatchQueue.main.async {
             self.internetAvailable = response
          }
       })
-      DispatchQueue.main.async {
-         self.loading = true
-      }
       if self.loadDataFromServer && self.internetAvailable {
          dataStore.fetchGnomes { (error) in
             guard error == nil else {
@@ -48,32 +49,43 @@ class GnomeListVM: ObservableObject {
                print("Error retrieving data")
                return
             }
-            
-            let someArr = CoredataManager.shared.fetchAllTypes()?.sorted(by: { $0.identifier ?? 0 < $1.identifier ?? 1 }) ?? [GnomeModel]()
             DispatchQueue.main.async {
-               self.gnomesFetched.removeAll()
-               self.gnomesFetched.append(contentsOf: someArr)
-               print("FetchedItemsNew!!!: \(self.gnomesFetched.count)")
-               self.filterResults(completion: {
-                  DispatchQueue.main.async {
-                     self.loading = false
-                     self.filter = false
-                  }
-               })
+               self.deliverNotificationOnCompletion()
+                  let someArr = CoredataManager.shared.fetchAllTypes()?.sorted(by: { $0.identifier ?? 0 < $1.identifier ?? 1 }) ?? [GnomeModel]()
+                  self.totalGnomesFetched.removeAll()
+                  self.totalGnomesFetched.append(contentsOf: someArr)
+                  self.gnomesFetched.removeAll()
+                  self.gnomesFetched.append(contentsOf: someArr)
+                  print("FetchedItemsNew!!!: \(self.gnomesFetched.count)")
+                  self.selectedColors.removeAll()
+                  self.selectedProfessions.removeAll()
+                  self.ageChoosen = 0
+                  self.loading = false
+//               self.filterResults(completion: {
+//                  DispatchQueue.main.async {
+//                     self.loading = false
+//                     self.filter = false
+//                  }
+//               })
             }
-            self.deliverNotificationOnCompletion()
          }
       } else {
-         fetchLocalData { (fetchedGnomes) in
+         DispatchQueue.main.async {
+            self.loading = true
+            self.fetchLocalData { (fetchedGnomes) in
             DispatchQueue.main.async {
                if fetchedGnomes.isEmpty {
                   self.gnomesFetched.removeAll()
+                  self.totalGnomesFetched.removeAll()
                } else {
+                  self.totalGnomesFetched.removeAll()
+                  self.totalGnomesFetched.append(contentsOf: fetchedGnomes)
                   self.gnomesFetched.removeAll()
                   self.gnomesFetched.append(contentsOf: fetchedGnomes)
                }
                self.loading = false
             }
+         }
          }
       }
    }
@@ -147,13 +159,13 @@ class GnomeListVM: ObservableObject {
    }
    
    func deliverNotificationOnCompletion() {
-      let content = UNMutableNotificationContent()
-      content.title = "Brastlewark"
-      content.body = "Gnomes downloaded from the server"
-      content.sound = UNNotificationSound.default
-      let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-      let request = UNNotificationRequest(identifier: "BrastlewarkNotificationIdentifier", content: content, trigger: trigger)
-      UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+         let content = UNMutableNotificationContent()
+         content.title = "Brastlewark"
+         content.body = "Gnomes downloaded from the server"
+         content.sound = UNNotificationSound.default
+         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+         let request = UNNotificationRequest(identifier: "BrastlewarkNotificationIdentifier", content: content, trigger: trigger)
+         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
    }
    
    func checkInternetIsAvailable(completion: @escaping (Bool) -> Void) {

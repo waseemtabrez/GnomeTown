@@ -10,17 +10,19 @@ import Foundation
 import CoreData
 
 struct CoredataManager {
-   static let shared = CoredataManager(moContext: NSManagedObjectContext.currentContext)
-   var managedObjectContext: NSManagedObjectContext
-   
-   private init(moContext: NSManagedObjectContext) {
-      self.managedObjectContext = moContext
+   static let shared = CoredataManager(viewContext: NSManagedObjectContext.viewContext, bckContext: NSManagedObjectContext.backgroundContext)
+   var managedObjectContextView: NSManagedObjectContext
+   var managedObjectContextBck: NSManagedObjectContext
+
+   private init(viewContext: NSManagedObjectContext, bckContext: NSManagedObjectContext) {
+      self.managedObjectContextView = viewContext
+      self.managedObjectContextBck = bckContext
    }
    
    func save(gnomes: [GnomeModel]) {
       var gnomesMO = [Gnome]()
       for type in gnomes {
-         let entity = Gnome(context: self.managedObjectContext)
+         let entity = Gnome(context: self.managedObjectContextBck)
          entity.name = type.name
          guard let identifier = type.identifier, let age = type.age else {
             return
@@ -36,12 +38,13 @@ struct CoredataManager {
          
          gnomesMO.append(entity)
       }
-      self.managedObjectContext.performAndWait {
+      self.managedObjectContextBck.performAndWait {
          do {
-            try self.managedObjectContext.save()
+            try self.managedObjectContextBck.save()
          } catch {
             print(error)
          }
+         self.managedObjectContextBck.reset()
       }
    }
    
@@ -49,14 +52,15 @@ struct CoredataManager {
       let fetchRequest: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Gnome")
       let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
       
-      self.managedObjectContext.performAndWait {
+      self.managedObjectContextBck.performAndWait {
          do {
-            try self.managedObjectContext.executeAndMergeChanges(withBatchDeleteRequest: batchDeleteRequest)
+            try self.managedObjectContextBck.executeAndMergeChanges(withBatchDeleteRequest: batchDeleteRequest)
             
             print("Coredata Items after Batch deletion: \(CoredataManager.shared.fetchAllTypes()?.count ?? 45)")
          } catch {
             print("Can't delete the Coredata objects")
          }
+         self.managedObjectContextBck.reset()
       }
    }
    
@@ -66,7 +70,7 @@ struct CoredataManager {
       request.predicate = NSPredicate(format: "name == %@", name as CVarArg)
       
       do {
-         accounts = try self.managedObjectContext.fetch(request)
+         accounts = try self.managedObjectContextView.fetch(request)
       } catch let error as NSError {
          print(error)
       }
@@ -98,7 +102,7 @@ struct CoredataManager {
       let gnomeFetchRequest: NSFetchRequest<Gnome> = Gnome.fetchRequest()
       
       do {
-         gnomeEntityArray = try self.managedObjectContext.fetch(gnomeFetchRequest)
+         gnomeEntityArray = try self.managedObjectContextView.fetch(gnomeFetchRequest)
       } catch let error as NSError {
          print(error)
       }

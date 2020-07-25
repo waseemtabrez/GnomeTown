@@ -11,6 +11,8 @@ import CoreData
 
 struct CoreDataCustomStack {
    static var shared = CoreDataCustomStack()
+   // MARK: - Core Data stack
+   
    lazy var persistentContainer: NSPersistentCloudKitContainer = {
       /*
        The persistent container for the application. This implementation
@@ -35,11 +37,22 @@ struct CoreDataCustomStack {
             fatalError("Unresolved error \(error), \(error.userInfo)")
          }
       })
-      container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-      container.viewContext.undoManager = nil
-      container.viewContext.shouldDeleteInaccessibleFaults = true
-      
-      container.viewContext.automaticallyMergesChangesFromParent = true
       return container
    }()
+   
+   // MARK: - Core Data Saving support
+   
+   mutating func saveContext () {
+      let context = self.persistentContainer.viewContext
+      if context.hasChanges {
+         do {
+            try context.save()
+         } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+         }
+      }
+   }
 }

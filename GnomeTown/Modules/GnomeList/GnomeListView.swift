@@ -70,7 +70,8 @@ struct GnomeListView: View {
                               .alert(isPresented: self.$showAlertNoInternet, content: {
                                  Alert(title: Text("No Internet Connection"), message: Text("Turn on Wifi or Cellular data to get the data from server."), dismissButton: .default(Text("Ok")))})
                               .onDisappear{
-                                 self.gnomeListVM.loadDataFromServer = true
+//                                 self.gnomeListVM.loadDataFromServer = true
+                                 self.gnomeListVM.loadDataFromServer = false
                                  self.gnomeListVM.loadGnomes()
                            }
                         }
@@ -100,7 +101,8 @@ struct GnomeListView: View {
          })
             .onAppear{
                if self.gnomeListVM.gnomesFetched.isEmpty {
-                  self.gnomeListVM.loadDataFromServer = true
+//                  self.gnomeListVM.loadDataFromServer = true
+                  self.gnomeListVM.loadDataFromServer = false
                   self.gnomeListVM.loading = true
                   self.gnomeListVM.checkInternetIsAvailable(completion: { (response) in
                      DispatchQueue.main.async {
@@ -159,12 +161,14 @@ struct ClearAllFiltersView: View {
    @EnvironmentObject var gnomeVM: GnomeListVM
    var body: some View {
       Button(action: {
+//         self.gnomeVM.loading = true
+         self.gnomeVM.loadDataFromServer = false
          self.gnomeVM.selectedColors.removeAll()
          self.gnomeVM.selectedProfessions.removeAll()
+         self.gnomeVM.gnomesFetched.removeAll()
          self.gnomeVM.ageChoosen = 0
          self.gnomeVM.ageFilter = .none
-         self.gnomeVM.loading = true
-         self.gnomeVM.loadDataFromServer = true
+//         self.gnomeVM.loadDataFromServer = true
          self.gnomeVM.loadGnomes()
       }) {
          Image(systemName: "xmark.circle").foregroundColor(Color.red)

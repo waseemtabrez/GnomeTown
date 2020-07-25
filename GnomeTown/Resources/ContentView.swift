@@ -13,6 +13,7 @@ struct ContentView: View {
    @ObservedObject var gnomeListVM = GnomeListVM()
    @ObservedObject var gnomeFilterVM = GnomeFilterVM()
    
+   
    var body: some View {
       TabView(selection: self.$selection){
          GnomeListView().environmentObject(self.gnomeListVM)
@@ -36,8 +37,6 @@ struct ContentView: View {
       }.onAppear{
          self.gnomeListVM.loadDataFromServer = true
          self.gnomeListVM.loadGnomes()
-         _ = self.gnomeFilterVM.getHaircolors()
-         _ = self.gnomeFilterVM.getProfessions()
       }
    }
 }
