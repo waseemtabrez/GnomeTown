@@ -11,4 +11,4 @@ This application demonstrates the use of,
 2. Coredata
 3. URLSession for networking and JSON parsing
 4. Filtering the data
-5. Availablilty of internet should be a factor which doesn't bloack the UI.
+5. Availablilty of internet should be a factor which doesn't block the UI.
