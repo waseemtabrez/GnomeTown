@@ -7,7 +7,7 @@ It is an application which shows a GnomeTown called Brastlewark. The Gnomes in t
 - Caching is used to store images temporarily and Coredata for local storage.
 - Deliver notification when the download is completed successfully.
 
-### This application demonstrates the use of,
+### *This application demonstrates the use of,*
 - *SwiftUI with MVVM architecture*
 - *Coredata and CloudKit*
 - *URLSession for networking and JSON parsing*
