@@ -7,7 +7,7 @@ An example to download JSON data from a Server and display it efficiently in a l
 Caching is used to store images temporarily and Coredata for local storage.
 Deliver notification when the download is completed successfully.
 
-This application demonstrates the use of,
+### This application demonstrates the use of,
 - SwiftUI with MVVM architecture
 - Coredata
 - URLSession for networking and JSON parsing
